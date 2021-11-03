@@ -1,8 +1,10 @@
+from sql import Sql
 class CubicPool:
     def __init__(self) -> None:
         self.__row: dict = {}
         self.__pool: list = []
         self.cube: dict = {}
+        self.sql = Sql(self.cube)
 
 
     def criarTabela(self, nomeTabela, tabela=[]) -> None:
@@ -11,7 +13,6 @@ class CubicPool:
 
     def inserirDados(self, tabela, dados) -> None:
         self.cube[tabela].append(dados)
-
 
 
 CubicPool = CubicPool()
@@ -25,4 +26,4 @@ CubicPool.inserirDados(
     }
 )
 
-print(CubicPool.cube)
+print(CubicPool.sql.query('SELECT * FROM Tabela2;'))
